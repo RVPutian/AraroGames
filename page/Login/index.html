@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ararogames</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Tajawal:wght@300;400;500;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="body-main auth-page" data-theme="dark" data-lang="en" data-dir="ltr">
+    <main class="auth-shell">
+        <section class="auth-card">
+            <div class="auth-brand">
+                <div class="auth-badge">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h1>Admin Access</h1>
+                <p>Sign in with your Appwrite admin account.</p>
+            </div>
+
+            <div class="auth-alert" id="authAlert" role="alert" style="display:none;">
+                Login failed.
+            </div>
+
+            <form id="adminLoginForm" class="auth-form" autocomplete="on">
+                <label class="auth-field" for="adminEmail">
+                    <span>Email</span>
+                    <input id="adminEmail" class="form-input" name="email" type="email" required autocomplete="email">
+                </label>
+
+                <label class="auth-field" for="adminPassword">
+                    <span>Password</span>
+                    <input id="adminPassword" class="form-input" name="password" type="password" required autocomplete="current-password">
+                </label>
+
+                <button id="adminLoginButton" class="btn btn-primary auth-button" type="submit">
+                    <i class="fas fa-right-to-bracket"></i>
+                    <span>Sign in</span>
+                </button>
+
+                <a class="btn btn-secondary" href="/index.html">Back Home</a>
+            </form>
+
+            <div class="auth-hint">
+                Only users listed in the admins table can enter the dashboard.
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@25.0.0"></script>
+    <script src="../../assets/js/style.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
