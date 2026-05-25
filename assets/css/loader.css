@@ -1,0 +1,106 @@
+/* Dedicated fullscreen loader for the plant-growing animation */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 10000;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(95, 157, 126, 0.18), transparent 28%),
+    radial-gradient(circle at 50% 65%, rgba(201, 139, 45, 0.08), transparent 24%),
+    var(--bg-page, #07110E);
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+  will-change: opacity;
+  isolation: isolate;
+}
+
+.loader-screen::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(95, 157, 126, 0.08), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(230, 200, 122, 0.05), transparent 55%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.loader-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+body.loading > header,
+body.loading > main,
+body.loading > footer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.loaded > header,
+body.loaded > main,
+body.loaded > footer {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.loading > .feedback-modal-backdrop,
+body.loading > .success-popup,
+body.loading > .error-popup {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-plant {
+  position: relative;
+  width: min(72vw, 320px);
+  max-width: 320px;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 24px 34px rgba(0, 0, 0, 0.25));
+  transform: translateZ(0);
+}
+
+.loader-plant svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  overflow: visible;
+}
+
+@media (max-width: 640px) {
+  .loader-plant {
+    width: min(82vw, 280px);
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 420px) {
+  .loader-plant {
+    width: min(86vw, 240px);
+    max-width: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-screen {
+    transition-duration: 0.25s;
+  }
+
+  .loader-plant {
+    filter: none;
+  }
+}
