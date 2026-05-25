@@ -1,0 +1,280 @@
+.download-main {
+    margin-top: 68px;
+}
+
+.download-showcase-section {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 68px);
+    padding-top: clamp(4.5rem, 7vw, 6.5rem);
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.download-showcase-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 14% 18%, rgba(201, 139, 45, 0.16), transparent 30%),
+        radial-gradient(circle at 84% 12%, rgba(95, 157, 126, 0.2), transparent 34%),
+        linear-gradient(165deg, rgba(6, 17, 14, 0.18), rgba(6, 17, 14, 0.66));
+    z-index: 0;
+    pointer-events: none;
+}
+
+.download-shell {
+    position: relative;
+    z-index: 1;
+}
+
+.download-entrance {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+}
+
+.download-lead {
+    max-width: 760px;
+    margin: 0 auto clamp(2.1rem, 5vw, 3rem);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+}
+
+.download-gameplay-shell {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.download-gameplay-shell .gameplay-section {
+    margin-top: 0;
+}
+
+.download-gameplay-shell .video-card {
+    width: min(860px, 100%);
+    transform: translateY(0);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.download-gameplay-shell .video-card iframe {
+    display: block;
+    width: 100%;
+    height: clamp(320px, 44vw, 430px);
+    border: 0;
+}
+
+.download-gameplay-shell .video-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(230, 200, 122, 0.25);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.36), 0 0 24px rgba(201, 139, 45, 0.16);
+}
+
+.download-cta {
+    position: relative;
+    margin: clamp(3rem, 7vw, 5rem) auto 0;
+    width: min(920px, 100%);
+    min-height: 280px;
+    border-radius: 28px;
+    border: 1px solid rgba(230, 200, 122, 0.18);
+    background:
+        radial-gradient(circle at 50% 20%, rgba(201, 139, 45, 0.16), transparent 52%),
+        linear-gradient(180deg, rgba(17, 28, 25, 0.86), rgba(7, 17, 14, 0.95));
+    box-shadow: 0 36px 80px rgba(0, 0, 0, 0.35);
+    padding: clamp(2rem, 4.8vw, 3.2rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.download-cta::before {
+    content: "";
+    position: absolute;
+    width: min(560px, 82vw);
+    height: min(560px, 82vw);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 139, 45, 0.13), rgba(201, 139, 45, 0));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.cta-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    color: #f6e9c8;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.35rem;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+.download-cta-btn {
+    min-width: 230px;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    padding: 1rem 2.35rem;
+    border-radius: 999px;
+    border: 1px solid rgba(230, 200, 122, 0.45);
+    box-shadow: 0 0 0 0 rgba(201, 139, 45, 0.45), 0 18px 35px rgba(0, 0, 0, 0.35);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.download-cta-btn:hover,
+.download-cta-btn:focus-visible {
+    transform: translateY(-4px) scale(1.03);
+    border-color: rgba(246, 233, 200, 0.8);
+    box-shadow: 0 0 0 10px rgba(201, 139, 45, 0.12), 0 24px 44px rgba(0, 0, 0, 0.4);
+}
+
+.cta-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.cta-particle {
+    position: absolute;
+    width: var(--particle-size, 7px);
+    height: var(--particle-size, 7px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(246, 233, 200, 0.9), rgba(201, 139, 45, 0));
+    left: var(--particle-left, 50%);
+    top: 110%;
+    opacity: 0;
+    animation: ctaFloat var(--particle-duration, 10s) linear infinite;
+    animation-delay: var(--particle-delay, 0s);
+}
+
+@keyframes ctaFloat {
+    0% {
+        transform: translate3d(0, 0, 0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.65;
+    }
+    60% {
+        opacity: 0.45;
+    }
+    100% {
+        transform: translate3d(var(--particle-drift, 14px), -360px, 0) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .download-main {
+        margin-top: 60px;
+    }
+
+    .download-showcase-section {
+        min-height: auto;
+        padding-top: 3.6rem;
+        padding-bottom: 3.4rem;
+    }
+
+    .download-lead {
+        margin-bottom: 2rem;
+        font-size: 0.98rem;
+    }
+
+    .download-gameplay-shell {
+        padding: 1.1rem;
+    }
+
+    .download-gameplay-shell .video-card {
+        border-radius: 16px;
+    }
+
+    .download-gameplay-shell .video-card iframe {
+        height: clamp(250px, 56vw, 360px);
+    }
+
+    .download-cta {
+        min-height: 250px;
+        padding: 1.6rem 1rem;
+        border-radius: 22px;
+    }
+
+    .download-cta-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .download-showcase-section {
+        padding-top: 3rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .download-lead {
+        font-size: 0.94rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .download-gameplay-shell {
+        padding: 0;
+    }
+
+    .download-gameplay-shell .video-card {
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    .download-gameplay-shell .video-card iframe {
+        height: min(56vw, 280px);
+    }
+
+    .download-cta {
+        min-height: 220px;
+        margin-top: 2.25rem;
+        padding: 1.35rem 0.9rem;
+        border-radius: 18px;
+    }
+
+    .cta-subtitle {
+        font-size: clamp(1.2rem, 5vw, 1.55rem);
+        margin-bottom: 1rem;
+    }
+
+    .download-cta-btn {
+        max-width: none;
+        min-width: 0;
+        padding: 0.95rem 1.2rem;
+        font-size: 0.96rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .download-gameplay-shell .video-card iframe {
+        height: 220px;
+    }
+
+    .download-cta {
+        padding: 1.1rem 0.8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .download-entrance {
+        opacity: 1;
+        transform: none;
+    }
+
+    .cta-particle {
+        animation: none;
+        opacity: 0.25;
+    }
+}
