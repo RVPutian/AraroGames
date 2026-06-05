@@ -274,7 +274,23 @@ h6 {
 
 .ex-demo .icons { position: absolute; fill: #fff; color: #fff; height: 130px; top: 226px; width: 50px; display: flex; flex-direction: column; align-items: center; justify-content: space-around; }
 
-.ex-demo .icons.roles { width: auto; height: auto; top: auto; bottom: 20px; padding: 0 15px; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.ex-demo .icons.roles { 
+    width: auto; 
+    height: auto; 
+    top: auto; 
+    bottom: 20px; 
+    padding: 0 15px; 
+    
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;     
+    align-items: center; 
+    
+    /* This aligns the badges to the left */
+    justify-content: flex-start; 
+    
+    gap: 8px; 
+}
 
 .ex-demo .icons.roles p { margin: 0; font-size: 0.9rem; color: #fff; opacity: 0; transition: opacity 1s; line-height: 1.2; text-align: center; position: relative; padding: 0.15rem 0.4rem; }
 .ex-demo .icons.roles p::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75)); border-radius: 8px; opacity: 1; z-index: -1; }
