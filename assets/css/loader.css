@@ -74,8 +74,8 @@ body.loading > header,
 body.loading > main,
 body.loading > footer,
 body.loading > .feedback-modal-backdrop {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0.01;
+  
   pointer-events: none;
 }
 
