@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KulturaQuest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Tajawal:wght@300;400;500;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="body-main dashboard-page" data-lang="en" data-dir="ltr">
+    <header class="main-header" id="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-text">KulturaQuest</span>
+                </div>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="/index.html#home" class="nav-link" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="/index.html#about" class="nav-link" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">About Us</span>
+                </a>
+                <a href="/index.html#skills" class="nav-link" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span class="nav-text">Tools</span>
+                </a>
+                <a href="/index.html#feedback" class="nav-link" data-section="feedback">
+                    <i class="fas fa-comments"></i>
+                    <span class="nav-text">Feedback</span>
+                </a>
+                <a href="/page/Download/index.html" class="nav-link" data-section="download">
+                    <i class="fas fa-download"></i>
+                    <span class="nav-text">Download</span>
+                </a>
+                <a href="/page/Assets/index.html" class="nav-link" data-section="projects">
+                    <i class="fas fa-rocket"></i>
+                    <span class="nav-text">Assets</span>
+                </a>
+                <a href="/page/AdminDashboard/index.html" class="nav-link active" id="adminDashboardNavLink" data-section="admin-dashboard" aria-label="Admin">
+                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                    <span class="nav-text">Admin</span>
+                </a>
+            </div>
+
+            <div class="nav-controls">
+                <button class="menu-toggle" id="menuToggle" title="Toggle Menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content dashboard-shell">
+        <section class="dashboard-header">
+            <div>
+                <p class="dashboard-kicker">Admin Dashboard</p>
+                <h1>Welcome, Admin</h1>
+                <p class="dashboard-subtitle" id="dashboardSubtitle">Checking session...</p>
+            </div>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap; justify-content:flex-end;">
+                <button class="btn btn-primary" type="button" id="adminLogoutButton">
+                    <i class="fas fa-right-from-bracket"></i>
+                    <span>Sign out</span>
+                </button>
+                <a class="btn btn-secondary" href="/index.html">
+                    <i class="fas fa-house"></i>
+                    <span>Back Home</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <article class="dashboard-card">
+                <div class="dashboard-card-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div>
+                    <p class="dashboard-card-label">Total Visits</p>
+                    <h2>18,420</h2>
+                </div>
+            </article>
+
+            <article class="dashboard-card">
+                <div class="dashboard-card-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div>
+                    <p class="dashboard-card-label">Feedback Messages</p>
+                    <h2 id="feedbackCount">0</h2>
+                </div>
+            </article>
+
+            <article class="dashboard-card">
+                <div class="dashboard-card-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div>
+                    <p class="dashboard-card-label">Downloads</p>
+                    <h2>2,418</h2>
+                </div>
+            </article>
+
+            <article class="dashboard-card">
+                <div class="dashboard-card-icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <div>
+                    <p class="dashboard-card-label">Active Builds</p>
+                    <h2>4</h2>
+                </div>
+            </article>
+        </section>
+
+        <section class="dashboard-panel">
+            <div class="panel-header">
+                <h2>Recent Feedback</h2>
+                <span class="panel-chip" id="feedbackPanelChip">Loading...</span>
+            </div>
+            <div class="feedback-empty-state" id="feedbackEmptyState" style="display:none;">
+                <i class="fas fa-inbox"></i>
+                <p>No feedback records yet.</p>
+                <small>Feedback submitted from the website will appear here.</small>
+            </div>
+            <div class="feedback-list" id="feedbackList" aria-live="polite"></div>
+        </section>
+        <!-- MANAGE UPDATE LOGS PANEL -->
+        <section class="dashboard-panel" style="margin-top: 2rem;">
+            <div class="panel-header">
+                <h2>Manage Update Logs</h2>
+            </div>
+            <div class="feedback-list" id="dashboardPatchNotesList" aria-live="polite">
+                <!-- Existing updates will load here -->
+            </div>
+        </section>
+        <section class="dashboard-panel" style="margin-top: 2rem;">
+    <div class="panel-header">
+        <h2>Post New Update Log</h2>
+    </div>
+    <form id="patchNoteForm" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem;">
+            <input type="text" id="patchVersion" class="form-input" placeholder="Version (e.g., v1.1.2)" required>
+            <input type="text" id="patchTitle" class="form-input" placeholder="Update Title" required>
+        </div>
+        
+        
+        <div style="padding: 1rem; border: 1px dashed var(--border); border-radius: 12px;">
+            <label style="color: var(--text-secondary); font-size: 0.9rem; display: block; margin-bottom: 0.5rem;">Update Image (Optional)</label>
+            <input type="file" id="patchImage" accept="image/*" style="color: var(--text-primary);">
+        </div>
+
+        <div id="changesBuilder" style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
+            <h3 style="font-size: 1rem; margin-bottom: 1rem;">Change Log Items</h3>
+            <ul id="currentChangesList" style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.9rem; padding-left: 1rem;">
+                </ul>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <select id="changeTag" class="form-input" style="width: auto; flex-shrink: 0;">
+                    <option value="ADDED">ADDED</option>
+                    <option value="CHANGED">CHANGED</option>
+                    <option value="FIXED">FIXED</option>
+                </select>
+                <input type="text" id="changeText" class="form-input" style="flex-grow: 1;" placeholder="Describe the change...">
+                <button type="button" id="addChangeBtn" class="btn btn-secondary">Add to List</button>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="align-self: flex-start; margin-top: 1rem;">
+            <i class="fas fa-upload"></i> Publish Update
+        </button>
+    </form>
+</section>
+    </main>
+    <section class="dashboard-panel" style="margin-top: 2rem;">
+            <div class="panel-header">
+                <div>
+                    <h2>Manage Game Showcase</h2>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Upload screenshots and zone descriptions for the main website carousel.</p>
+                </div>
+            </div>
+
+            <form id="showcaseForm" class="showcase-admin-form">
+                <div class="form-grid">
+                    
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label class="custom-label">Zone Title</label>
+                            <input type="text" id="showcaseTitle" class="form-input" placeholder="e.g., ZONE: MOUNT PULAG TERRACES" required>
+                        </div>
+                        <div class="form-group" style="height: 100%;">
+                            <label class="custom-label">Zone Description</label>
+                            <textarea id="showcaseDesc" class="form-input form-textarea" style="height: 140px;" placeholder="- Traverse ancient Cordillera rice paddies..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label class="custom-label">Display Order</label>
+                            <input type="number" id="showcaseOrder" class="form-input" value="1" min="1" required>
+                        </div>
+                        <div class="form-group" style="height: 100%;">
+                            <label class="custom-label">Upload Screenshot (1920x1080)</label>
+                            <div class="file-upload-box">
+                                <i class="fas fa-image"></i>
+                                <span id="file-chosen-text">Click to browse or drag file here</span>
+                                <input type="file" id="showcaseImage" class="file-upload-input" accept="image/png, image/jpeg, image/webp" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Publish Showcase Card
+                    </button>
+                </div>
+            </form>
+
+            <div class="panel-header" style="margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+                <h3>Current Showcase Cards</h3>
+            </div>
+            <div class="feedback-list" id="dashboardShowcaseList" aria-live="polite">
+                </div>
+        </section>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text-wrapper">
+                    <p class="footer-text">
+                        <span class="footer-copyright">© 2026 KulturaQuest</span>
+                        <span class="footer-divider">•</span>
+                        <span class="footer-built">Digital Cultivation for the Future Generation</span>
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- CUSTOM DASHBOARD NOTIFICATIONS -->
+    <div class="success-popup" id="dashboardSuccessPopup" aria-hidden="true">
+        <div class="success-popup-content">
+            <div class="success-popup-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h4 class="success-popup-title">Success!</h4>
+            <p class="success-popup-message" id="dashboardSuccessMessage">Action completed.</p>
+        </div>
+    </div>
+
+    <div class="error-popup" id="dashboardErrorPopup" aria-hidden="true">
+        <div class="error-popup-content">
+            <div class="error-popup-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h4 class="error-popup-title">Error</h4>
+            <p class="error-popup-message" id="dashboardErrorMessage">Something went wrong.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@25.0.0"></script>
+    <script src="../../assets/js/style.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
