@@ -139,8 +139,31 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; }
 .ex-demo h2 { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; margin: 20px; opacity: 0; transition: opacity 1s; }
 .ex-demo .fa { opacity: 0; transition: opacity 1s; }
 .ex-demo .icons { position: absolute; fill: #fff; color: #fff; height: 130px; top: 226px; width: 50px; display: flex; flex-direction: column; align-items: center; justify-content: space-around; }
-.ex-demo .icons.roles { width: auto; height: auto; top: auto; bottom: 20px; padding: 0 15px; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 8px; }
-.ex-demo .icons.roles p { margin: 0; font-size: 0.9rem; color: #fff; opacity: 0; transition: opacity 1s; line-height: 1.2; text-align: center; position: relative; padding: 0.15rem 0.4rem; }
+.ex-demo .icons.roles { width: auto;
+    width: 100%;             /* Ensures it spans the card width */
+    height: auto;
+    top: auto;
+    bottom: 20px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;  /* Force vertical stacking */
+    align-items: flex-start; /* Anchor everything to the left */
+    justify-content: flex-start;
+    gap: 8px;                /* Gap between stacked roles */
+    position: absolute;
+}
+.ex-demo .icons.roles p { 
+    margin: 0;
+    font-size: 0.9rem;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 1s;
+    line-height: 1.2;
+    text-align: left;        /* Keep text left-aligned */
+    position: relative;
+    padding: 0.15rem 0.4rem;
+    display: inline-block;   /* Keeps background tight to text */
+ }
 .ex-demo .icons.roles p::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75)); border-radius: 8px; opacity: 1; z-index: -1; }
 .ex-demo .card:hover h2, .ex-demo .card:hover .fa { opacity: 1; }
 .ex-demo .card:hover .roles p { opacity: 1; }
@@ -499,7 +522,7 @@ img { max-width: 100%; height: auto; }
     border-radius: 24px;
     
     /* 1. LOWER THE PADDING: This makes the box vertically shorter/tighter around the text (was 2.5rem) */
-    padding: 1.5rem; 
+    padding: .5rem; 
     
     box-shadow: 0 24px 55px rgba(0, 0, 0, 0.26);
 
