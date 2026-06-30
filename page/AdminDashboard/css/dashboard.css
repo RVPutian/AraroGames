@@ -38,7 +38,8 @@
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Change auto-fit to auto-fill */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.25rem;
     margin-bottom: 1.5rem;
 }
@@ -455,7 +456,8 @@
 
     .dashboard-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        /* Change auto-fit to auto-fill here as well */
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 1.25rem;
         margin-bottom: 1.5rem;
     }
